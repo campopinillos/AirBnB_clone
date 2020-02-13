@@ -2,5 +2,8 @@
 *~
 **/*~
 **/\#*
-
+.vscode
+.DS_Store
+file.json
+__pycache__
 # End
