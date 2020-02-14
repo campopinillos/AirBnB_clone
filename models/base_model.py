@@ -32,13 +32,14 @@ class BaseModel:
 
     def __str__(self):
         """Print __str__"""
-        return "[{}] ({}) {}".format(BaseModel.__name__,
+        return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id,
                                      self.__dict__)
 
     def save(self):
         """Update date method"""
         self.updated_at = datetime.now()
+        storage.new(self)
         storage.save()
 
     def to_dict(self):
