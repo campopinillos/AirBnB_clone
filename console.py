@@ -53,6 +53,49 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print(storage.all()[k])
 
+    def do_destroy(self, line):
+        """Destroy command to delete a instance"""
+        if line is None:
+            print("** class name missing **")
+        elif line.split(' ')[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        elif len(line.split(' ')) < 2:
+            print("** instance id missing **")
+        else:
+            k = "{}.{}".format(line.split(' ')[0], line.split(' ')[1])
+            if k not in storage.all():
+                print("** no instance found **")
+            else:
+                del storage.all()[k]
+                storage.save()
+
+    def do_all(self, line):
+        """All command prints all string representation of all instances"""
+        if line != "":
+            if line not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+            else:
+                list = [str(v) for v in storage.all().values()
+                        if line == v.__class__.__name__]
+                print(list)
+        else:
+            list = [str(v) for v in storage.all().values()]
+            print(list)
+
+    def do_update(self, line):
+        """Update command load new info at the instances"""
+        if line is None:
+            print("** class name missing **")
+        elif line.split(' ')[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        elif len(line.split(' ')) < 2:
+            print("** instance id missing **")
+        elif len(line.split(' ')) < 3:
+            print("** attribute name missing **")
+        elif len(line.split(' ')) < 4:
+            print("** value missing **")
+
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
