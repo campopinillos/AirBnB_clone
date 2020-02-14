@@ -28,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         """Create command new instance"""
-        if line is None:
+        if line is None or line == "":
             print("** class name missing **")
         elif line not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """Show command display info of the id instance"""
-        if line is None:
+        if line is None or line == "":
             print("** class name missing **")
         elif line.split(' ')[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -55,7 +55,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Destroy command to delete a instance"""
-        if line is None:
+        if line is None or line == "":
             print("** class name missing **")
         elif line.split(' ')[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -75,16 +75,16 @@ class HBNBCommand(cmd.Cmd):
             if line not in HBNBCommand.__classes:
                 print("** class doesn't exist **")
             else:
-                list = [str(v) for v in storage.all().values()
-                        if line == v.__class__.__name__]
+                list = [v for k, v in storage.all().items()
+                        if k.split(".")[0] == line]
                 print(list)
         else:
-            list = [str(v) for v in storage.all().values()]
+            list = [v for v in storage.all().values()]
             print(list)
 
     def do_update(self, line):
         """Update command load new info at the instances"""
-        if line is None:
+        if line is None or line == "":
             print("** class name missing **")
         elif line.split(' ')[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -94,7 +94,6 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(line.split(' ')) < 4:
             print("** value missing **")
-
 
 
 if __name__ == '__main__':
