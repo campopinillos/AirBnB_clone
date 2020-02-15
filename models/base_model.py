@@ -21,7 +21,7 @@ class BaseModel:
                     setattr(self, k, datetime.strptime(v,
                                                        '%Y-%m-%dT%H:%M:%S.%f'))
                 elif k == "__class__":
-                    setattr(self, k, BaseModel)
+                    setattr(self, k, type(self))
                 else:
                     setattr(self, k, v)
         else:
@@ -44,7 +44,8 @@ class BaseModel:
 
     def to_dict(self):
         """Return dict method"""
-        self.__dict__["__class__"] = BaseModel.__name__
-        self.updated_at = datetime.isoformat(self.updated_at)
-        self.created_at = datetime.isoformat(self.created_at)
-        return self.__dict__
+        dict = self.__dict__.copy()
+        dict["__class__"] = type(self).__name__
+        dict["created_at"] = dict["created_at"].isoformat()
+        dict["updated_at"] = dict["updated_at"].isoformat()
+        return dict
