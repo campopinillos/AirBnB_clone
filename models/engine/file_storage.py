@@ -29,7 +29,7 @@ class FileStorage:
 
     def reload(self):
         """Method to deserialize all the objects from a JSON file"""
-        if os.path.exists(FileStorage.__file_path):
+        try:
             from models.base_model import BaseModel
             from models.user import User
             from models.city import City
@@ -40,5 +40,6 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as file:
                 obj = json.load(file)
                 for v in obj.values():
-                    print(eval(v["__class__"]))
                     self.new(eval(v["__class__"])(**v))
+        except IOError:
+            pass
