@@ -15,9 +15,17 @@ from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
-    """ Console """
+    """Class Console """
     prompt = '(hbnb) '
-    intro = "Welcome!"
+    intro = '      WELCOME!\n\
+        .--. \n\
+       |o_o |\n\
+       |!_/ |\n\
+      //   \\ \\ \n\
+     (|     | ) \n\
+    / \\_   _/ \\ \n\
+    \\___)=(___/ \n'
+
     __classes = {'BaseModel': BaseModel,
                  'User': User,
                  'Place': Place,
@@ -106,6 +114,26 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(line.split(' ')) < 4:
             print("** value missing **")
+
+    def do_all(self, line):
+        """All command prints all string representation of all instances"""
+        if line != "":
+            if line not in HBNBCommand.__classes:
+                print("** class doesn't exist **")
+            else:
+                list = [str(v) for k, v in storage.all().items()
+                        if k.split(".")[0] == line]
+                print(list)
+        else:
+            list = [str(v) for v in storage.all().values()]
+            print(list)
+
+    def do_count(self, line):
+        count = 0
+        for k, v in storage.all().items():
+            if k.split(".")[0] == line:
+                count += 1
+        print(count)
 
 
 if __name__ == '__main__':
