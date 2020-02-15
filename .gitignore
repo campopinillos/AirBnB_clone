@@ -6,4 +6,10 @@
 .DS_Store
 file.json
 __pycache__
+test_save_reload_user.py
+test_base_model.py
+
 # End
+
+
+test_save_reload_base_model.py
