@@ -135,6 +135,17 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
         print(count)
 
+    def default(self, line):
+        lines = line.split('.')
+        if lines[1] == "all()":
+            self.do_all(lines[0])
+        if lines[1] == "count()":
+            self.do_count(lines[0])
+        if lines[1][0:5] == "show(" and lines[1][-1:] == ")":
+            self.do_show(lines[0] + " " + lines[1][5:-1])
+        if lines[1][0:8] == "destroy(" and lines[1][-1:] == ")":
+            self.do_destroy(lines[0] + " " + lines[1][8:-1])
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

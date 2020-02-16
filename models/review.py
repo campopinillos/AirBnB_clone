@@ -10,4 +10,4 @@ class Review(BaseModel):
     """ Review City """
     place_id = ""
     user_id = ""
-    text: ""
+    text = ""
