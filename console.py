@@ -114,6 +114,16 @@ class HBNBCommand(cmd.Cmd):
             print("** attribute name missing **")
         elif len(line.split(' ')) < 4:
             print("** value missing **")
+        else:
+            k = "{}.{}".format(line.split(' ')[0], line.split(' ')[1])
+            if k not in storage.all():
+                print("** no instance found **")
+            else:
+                """if type(getattr(storage.all()[k], attr)) is int"""
+                attr = line.split()[2]
+                v = line.split()[3]
+                setattr(storage.all()[k], attr, v)
+                storage.save()
 
     def do_all(self, line):
         """All command prints all string representation of all instances"""
@@ -129,6 +139,7 @@ class HBNBCommand(cmd.Cmd):
             print(list)
 
     def do_count(self, line):
+        """Count command counts the instances of a class"""
         count = 0
         for k, v in storage.all().items():
             if k.split(".")[0] == line:
@@ -136,15 +147,19 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
     def default(self, line):
-        lines = line.split('.')
-        if lines[1] == "all()":
-            self.do_all(lines[0])
-        if lines[1] == "count()":
-            self.do_count(lines[0])
-        if lines[1][0:5] == "show(" and lines[1][-1:] == ")":
-            self.do_show(lines[0] + " " + lines[1][5:-1])
-        if lines[1][0:8] == "destroy(" and lines[1][-1:] == ")":
-            self.do_destroy(lines[0] + " " + lines[1][8:-1])
+        """Default command"""
+        if line and len(line.split()) > 1: 
+            lines = line.split('.')
+            if lines[1] == "all()":
+                self.do_all(lines[0])
+            elif lines[1] == "count()":
+                self.do_count(lines[0])
+            elif lines[1][0:5] == "show(" and lines[1][-1:] == ")":
+                self.do_show(lines[0] + " " + lines[1][5:-1])
+            elif lines[1][0:8] == "destroy(" and lines[1][-1:] == ")":
+                self.do_destroy(lines[0] + " " + lines[1][8:-1])
+        else:
+            print("*** Unknown syntax: {}".format(line))        
 
 
 if __name__ == '__main__':
