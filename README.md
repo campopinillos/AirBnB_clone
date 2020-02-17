@@ -1,4 +1,4 @@
-![Holberton school logo](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/65f4a1dd9c51265f49d0.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUZGDONYM4%2F20200212%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20200212T214854Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=7382345320fac4fbe79b2f9f210346e173da2846547dc5ec08dd1b475e9c4c40)
+![Holberton school logo](https://github.com/campopinillos/AirBnB_clone/blob/master/hbnb.png)
 # AirBnB clone Project
 
 ## Table of Contents
@@ -7,8 +7,6 @@
 * [Requirements](#requirements)
 * [Quick Start](#quick-start)
 * [Usage](#usage)
-* [Man page](#man-page)
-* [Example of Use](#example-of-use)
 * [Bugs](#bugs)
 * [Authors](#authors)
 
@@ -17,119 +15,105 @@ This is collaborative project made by Luz Adriana Ariza and Campo Elias Pinillos
 
 **The Console**
 
+Will help us to:
+
 1. Create your data model
 2. Manage (create, update, destroy, etc) objects via a console / command interpreter
 3. Store and persist objects to a file (JSON file)
 
+In this case, we want to be able to manage the objects of our project:
+
+* Create a new object (ex: a new User or a new Place)
+* Retrieve an object from a file, a database etc…
+* Do operations on objects (count, compute stats, etc…)
+* Update attributes of an object
+* Destroy an object
 
 ## File Structure
 
 These are the files with the custom funtions and system calls, each one contains a brief description:
 
+
+
 |   ***File***    |  ***Description***                   |
 |---------------|---------------------------------------|
-|  [`holberton.h`](./holberton.h)	|  Header file with the prototypes	|
-|  [`lsh.c`](./lsh.c) |  Main File functions to execute |
-|  [`_prompt.c`](./_prompt.c) |  Prompt and getline file	|
-|  [`_execve.c`](./_execve.c)	|  Execute function |
-|  [`_strtok.c`](./_strtok.c) | Custom strtok function  |
-|  [`_signal.c`](./_signal.c)  | Ctrl + C deal function	|
-|  [`_ifdir.c`](./_ifdir.c)  | Checks if the command is only a directory	|
+|  [`console.py`](./console.py)	|  Console file	|
+|  [`models`](./models) |  Contains all the classes |
+|  [`models/__init__`](./models/__init__.py) |  Connects with filestorage |
+|  [`models/base_model`](./models/base_model.py) |  Base Model class |
+|  [`models/user`](./models/user.py) |  User class |
+|  [`models/state`](./models/state.py) |  State class |
+|  [`models/city`](./models/city.py) |  City class |
+|  [`models/place`](./models/place.py) |  Place class |
+|  [`models/amenity`](./models/amenity.py) |  Amenity class |
+|  [`models/review`](./models/review.py) |  Review class |
+|  [`models/engine`](./models/engine) |  Contains File Storage engine |
+|  [`models/engine/file_storage`](./models/engine/file_storage.py) |  File Storage module |
+|  [`tests`](./tests) |  Prompt and getline file	|
+|  [`AUTHORS`](./AUTHORS)	|  AUTHORS file|
+|  [`README.md`](./README.md) | README.md file |
 
 
 ## Requirements
-This simple_shell project is designed to run in the Ubuntu 14.04 LTS linux environment and to be compiled using the GNU compiler collection v. gcc 4.8.4 with flags-Wall, -Werror, -Wextra, and -pedantic.
-
-### List of used and allowed system calls and functions:
-
-This files only contains the following allowed funtion and system calls that where used in our .c files:
-
-| ***System call*** | ***Man page*** | ***System call*** | ***Man page*** |
-| ------------- | ------------- | ------------- | ------------- |
-| access  | man 2 access  | open |  man 2 open |
-| write  | man 2 write | opendir |  man 3 opendir |
-| perror |  man 3 perror | closedir  | man 3 closedir  |
-| execve  | man 2 execve | exit  | man 3 exit  |
-| signal |  man 2 signal | fork  | man 2 fork  |
-| free  | man 3 free  | wait |  man 2 wait |
-| getline  | man 3 getline | isatty  | man 3 isatty  |
-| malloc | man 3 malloc |  |   |
+* All files will be interpreted/compiled on Ubuntu 14.04 LTS using python3
+* Code should use the PEP 8 style (version 1.7 or more)
+* Your code should use the PEP 8 style (version 1.7 or more)
 
 
 ## Quick Start
 1. Clone repo
 ```
-git clone https://github.com/campopinillos/simple_shell.git
+git clone https://github.com/campopinillos/AirBnB_clone.git
 ```
 2. Change directory to simple_shell
 ```
-cd simple_shell/
+cd AirBnB_clone/
 ```
-3. Compile all the `.c` files in /simple_shell
+3. Execute ./console.py
 ```
-gcc -Wall -Werror -Wextra -pedantic *.c -o lsh
+> ./console.py
+      WELCOME!
+        .--. 
+       |o_o |
+       |!_/ |
+      //   \ \ 
+     (|     | ) 
+    / \_   _/ \ 
+    \___)=(___/ 
 ```
 
 ## Usage
 
-### Interactive Mode:
 In interactive mode input is accepted from character input, as follow:
-```
-> ./lsh
-$ /bin/ls -l
-total 52
--rw-r--r-- 1 vagrant vagrant   168 Nov 20 01:50 AUTHORS
--rw-r--r-- 1 vagrant vagrant  2789 Nov 20 03:47 README.md
--rw-r--r-- 1 vagrant vagrant   486 Nov 20 00:50 _execve.c
--rw-r--r-- 1 vagrant vagrant   763 Nov 20 01:45 _prompt.c
--rw-r--r-- 1 vagrant vagrant   239 Nov 19 14:35 _signal.c
--rw-r--r-- 1 vagrant vagrant  1039 Nov 19 14:38 _strtok.c
--rwxr-xr-x 1 vagrant vagrant 18278 Nov 20 01:46 a.out
--rw-r--r-- 1 vagrant vagrant   394 Nov 19 21:37 holberton.h
--rw-r--r-- 1 vagrant vagrant   443 Nov 20 00:55 lsh.c
--rw-r--r-- 1 vagrant vagrant     0 Nov 20 01:31 man_1_simple_shell
-```
 
-### Non-Interactive Mode:
-In non-interactive mode, the shell is run from commands being piped in. The subshell
-is only opened as the command is carried out and closes at the completion of the command.
-
+**create**:
 ```
-> echo "/bin/ls -l"  | ./lsh
-total 52
--rw-r--r-- 1 vagrant vagrant   168 Nov 20 01:50 AUTHORS
--rw-r--r-- 1 vagrant vagrant  2789 Nov 20 03:47 README.md
--rw-r--r-- 1 vagrant vagrant   486 Nov 20 00:50 _execve.c
--rw-r--r-- 1 vagrant vagrant   763 Nov 20 01:45 _prompt.c
--rw-r--r-- 1 vagrant vagrant   239 Nov 19 14:35 _signal.c
--rw-r--r-- 1 vagrant vagrant  1039 Nov 19 14:38 _strtok.c
--rwxr-xr-x 1 vagrant vagrant 18278 Nov 20 01:46 a.out
--rw-r--r-- 1 vagrant vagrant   394 Nov 19 21:37 holberton.h
--rw-r--r-- 1 vagrant vagrant   443 Nov 20 00:55 lsh.c
--rw-r--r-- 1 vagrant vagrant     0 Nov 20 01:31 man_1_simple_shell
+(hbnb) create BaseModel
+f2f11b8d-f082-494d-8703-d198deb61e3c
+(hbnb)
 ```
-
-## Man page
-For further information please refer to the man page - accessed in terminal with:
+**show**:
 ```
-> man ./man_1_simple_shell
+(hbnb) show BaseModel f2f11b8d-f082-494d-8703-d198deb61e3c
+[BaseModel] (f2f11b8d-f082-494d-8703-d198deb61e3c) {'id': 'f2f11b8d-f082-494d-8703-d198deb61e3c', 'updated_at': datetime.datetime(2020, 2, 17, 0, 26, 36, 658033), 'created_at': datetime.datetime(2020, 2, 17, 0, 26, 36, 658019)}
+(hbnb) 
 ```
-
-## Example of Use
-
-Some other examples to execute commands in the ./lsh interactive mode:
+**all**:
 ```
-~/simple_shel > ./lsh
+(hbnb) all BaseModel
+["[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'id': '49faff9a-6318-451f-87b6-910505c55907', 'updated_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903300)}"]
 ```
-**ls**:
+**destroy**:
 ```
-$ ls
-AUTHORS    _prompt.c  a.out	   man_1_simple_shell README.md  _signal.c  holberton.h _execve.c  _strtok.c  lsh.c
+(hbnb) destroy BaseModel 49faff9a-6318-451f-87b6-910505c55907
+(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+** no instance found **
+(hbnb) 
 ```
-**pwd**:
+**to_exit**:
 ```
-$ pwd
-/home/vagrant/simple_shell
+(hbnb) quit
+> 
 ```
 
 ## Bugs
