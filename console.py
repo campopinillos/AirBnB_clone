@@ -151,6 +151,13 @@ class HBNBCommand(cmd.Cmd):
                 self.do_show(lines[0] + " " + lines[1][5:-1])
             elif lines[1][0:8] == "destroy(" and lines[1][-1:] == ")":
                 self.do_destroy(lines[0] + " " + lines[1][8:-1])
+            elif lines[1][0:7] == "update(" and lines[1][-1:] == ")":
+                l_attr = lines[1][7:-1].split(", ")
+                s_attr = str(lines[0])
+                for i in l_attr:
+                    s_attr = s_attr + " " + i
+                self.do_update(s_attr)
+
         else:
             return cmd.Cmd.default(self, line)
 
