@@ -17,14 +17,6 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     """Class Console """
     prompt = '(hbnb) '
-    intro = '      WELCOME!\n\
-        .--. \n\
-       |o_o |\n\
-       |!_/ |\n\
-      //   \\ \\ \n\
-     (|     | ) \n\
-    / \\_   _/ \\ \n\
-    \\___)=(___/ \n'
 
     __classes = {'BaseModel': BaseModel,
                  'User': User,
