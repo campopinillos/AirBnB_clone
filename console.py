@@ -141,18 +141,12 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """Default command"""
-        if line and len(line.split()) > 1:
+        if len(line.split('.')) == 2:
             lines = line.split('.')
             if lines[1] == "all()":
                 self.do_all(lines[0])
-            elif lines[1] == "count()":
-                self.do_count(lines[0])
-            elif lines[1][0:5] == "show(" and lines[1][-1:] == ")":
-                self.do_show(lines[0] + " " + lines[1][5:-1])
-            elif lines[1][0:8] == "destroy(" and lines[1][-1:] == ")":
-                self.do_destroy(lines[0] + " " + lines[1][8:-1])
         else:
-            print("*** Unknown syntax: {}".format(line))
+            return cmd.Cmd.default(self, line)
 
 
 if __name__ == '__main__':
