@@ -157,16 +157,11 @@ class HBNBCommand(cmd.Cmd):
                 if l_attr[1][:1] == "{":
                     l_attr = lines[1][7:-1].split(", {")
                     id = l_attr[0]
-                    print(l_attr[0])
-                    print(l_attr[1])
-                    print("{" + l_attr[1])
                     d_attr = eval("{" + l_attr[1])
-                    print(d_attr)
                     for k, v in d_attr.items():
                         s_attr = s_attr + " " + id + " " + k + " " + str(v)
-                        print(s_attr)
                         self.do_update(s_attr)
-                        s_attr = str(lines[0])
+                    s_attr = str(lines[0])
                 else:
                     for i in l_attr:
                         s_attr = s_attr + " " + i
