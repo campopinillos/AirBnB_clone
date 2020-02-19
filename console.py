@@ -159,7 +159,7 @@ class HBNBCommand(cmd.Cmd):
                     d_attr = eval("{" + l_attr[1])
                     print(d_attr)
                     for k, v in d_attr.items():
-                        s_attr = lines[0] + " " + k " " + v
+                        s_attr = s_attr + " " + k + " " + v
                         self.do_update(s_attr)
                 else:
                     for i in l_attr:
