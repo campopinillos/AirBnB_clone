@@ -154,9 +154,17 @@ class HBNBCommand(cmd.Cmd):
             elif lines[1][0:7] == "update(" and lines[1][-1:] == ")":
                 l_attr = lines[1][7:-1].split(", ")
                 s_attr = str(lines[0])
-                for i in l_attr:
-                    s_attr = s_attr + " " + i
-                self.do_update(s_attr)
+                if l_attr[1][:1] == "{":
+                    l_attr = lines[1][7:-1].split(", {")
+                    d_attr = eval("{" + l_attr[1])
+                    print(d_attr)
+                    for k, v in d_attr.items():
+                        s_attr = lines[0] + " " + k " " + v
+                        self.do_update(s_attr)
+                else:
+                    for i in l_attr:
+                        s_attr = s_attr + " " + i
+                    self.do_update(s_attr)
 
         else:
             return cmd.Cmd.default(self, line)
