@@ -165,7 +165,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     for i in l_attr:
                         s_attr = s_attr + " " + i
-                    self.do_update(s_attr)
+                    
 
         else:
             return cmd.Cmd.default(self, line)
