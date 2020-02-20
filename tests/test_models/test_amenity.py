@@ -7,6 +7,7 @@ from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.engine.file_storage import FileStorage
 import os
+import pep8
 import json
 import datetime
 
@@ -25,6 +26,12 @@ class TestAmenity(unittest.TestCase):
             os.remove(FileStorage._FileStorage__file_path)
         except IOError:
             pass
+
+    def test_pep8_conformance(self):
+        """ Tests pep8 """
+        style = pep8.StyleGuide(quiet=True)
+        result = style.check_files(['models/amenity.py'])
+        self.assertEqual(result.total_errors, 0, "fix pep8")
 
     def test_subclass_Amenity(self):
         """Test Amenity instance"""
