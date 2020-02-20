@@ -28,10 +28,10 @@ class TestUser(unittest.TestCase):
             pass
 
     def test_pep8_conformance(self):
-        """ Tests pep8 """
+        """Tests Pep8"""
         style = pep8.StyleGuide(quiet=True)
         result = style.check_files(['models/user.py'])
-        self.assertEqual(result.total_errors, 0, "fix pep8")
+        self.assertEqual(result.total_errors, 0, "Fix pep8")
 
     def test_subclass_user(self):
         """Test user instance"""
