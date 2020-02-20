@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/U/bin/python3
 """
 User Unittest Module
 """
@@ -61,13 +61,13 @@ class TestUser(unittest.TestCase):
         U.password = "123"
         U.first_name = "Betty"
         U.last_name = "Holberton"
-        self.assertEqual(type(U.id), str)
+        self.assertTrue(type(U.id) is str)
         self.assertTrue(type(U.created_at) is datetime.datetime)
         self.assertTrue(type(U.updated_at) is datetime.datetime)
-        self.assertEqual(type(U.email), str)
-        self.assertEqual(type(U.password), str)
-        self.assertEqual(type(U.first_name), str)
-        self.assertEqual(type(U.last_name), str)
+        self.assertTrue(type(U.email) is str)
+        self.assertTrue(type(U.password) is str)
+        self.assertTrue(type(U.first_name) is str)
+        self.assertTrue(type(U.last_name) is str)
 
     def test_user_diff_id(self):
         """Test user instance different id"""
@@ -133,8 +133,34 @@ class TestUser(unittest.TestCase):
             User.save(self, 1, "Hello")
 
     def test_user_docstring(self):
-        """Test docstring"""
+        """Test user docstring"""
         self.assertIsNotNone(User.__doc__)
+
+    def test_user_to_dict(self):
+        """ Test user to_dic """
+        self.assertTrue('to_dict' in dir(User()))
+
+    def test_user_save(self):
+        """ Test save """
+        B = User()
+        B.save()
+        self.assertNotEqual(B.created_at, B.updated_at)
+        B.save()
+        self.assertFalse(B.created_at == B.updated_at)
+
+    def test_user_attributes_dict(self):
+        U = User()
+        U.email = "123@mail.com"
+        U.password = "123"
+        U.first_name = "Betty"
+        U.last_name = "Holberton"
+        self.assertTrue("id" in U.__dict__)
+        self.assertTrue("email" in U.__dict__)
+        self.assertTrue("password" in U.__dict__)
+        self.assertTrue("first_name" in U.__dict__)
+        self.assertTrue("last_name" in U.__dict__)
+        self.assertTrue("created_at" in U.__dict__)
+        self.assertTrue("updated_at" in U.__dict__)
 
 
 if __name__ == '__main__':
