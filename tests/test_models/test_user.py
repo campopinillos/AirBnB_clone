@@ -29,6 +29,8 @@ class TestUser(unittest.TestCase):
     def test_subclass_user(self):
         """Test user instance"""
         self.assertTrue(issubclass(User, BaseModel))
+        self.assertEqual(str(type(User())), "<class 'models.user.User'>")
+        self.assertIsInstance(User(), User)
 
     def test_user_basic_instance(self):
         """Test user instance"""
@@ -129,6 +131,10 @@ class TestUser(unittest.TestCase):
         """Tests save with more arguments"""
         with self.assertRaises(TypeError):
             User.save(self, 1, "Hello")
+
+    def test_user_docstring(self):
+        """Test docstring"""
+        self.assertIsNotNone(User.__doc__)
 
 
 if __name__ == '__main__':
