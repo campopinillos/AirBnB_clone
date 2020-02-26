@@ -61,25 +61,23 @@ These are the files with the custom funtions and system calls, each one contains
 
 
 ## Quick Start
-1. Clone repo
+1. Install python
 ```
-git clone https://github.com/campopinillos/AirBnB_clone.git
+> sudo apt-get install python3
 ```
-2. Change directory to simple_shell
+2. Clone repo
 ```
-cd AirBnB_clone/
+> git clone https://github.com/campopinillos/AirBnB_clone.git
 ```
-3. Execute ./console.py
+3. Change directory to simple_shell
+```
+> cd AirBnB_clone/
+``` 
+4. Execute ./console.py
 ```
 > ./console.py
-      WELCOME!
-        .--. 
-       |o_o |
-       |!_/ |
-      //   \ \ 
-     (|     | ) 
-    / \_   _/ \ 
-    \___)=(___/ 
+
+(hbnb) 
 ```
 
 ## Usage
