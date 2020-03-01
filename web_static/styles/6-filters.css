@@ -27,7 +27,7 @@
 	font-weight: 600;
 	margin-top: 25px;
 	margin-bottom: 5px;
-	margin-left: 45px;
+	margin-left: 40px;
 }
 
 .locations h4,
@@ -36,7 +36,7 @@
 	font-size: 14px;
 	margin-top: 0px;
 	margin-bottom: 25px;
-	margin-left: 45px;
+	margin-left: 40px;
 }
 
 .filters .locations .popover,
@@ -82,7 +82,6 @@ button {
 	border-radius: 4px;
 	margin-left: auto;
 	margin-right: 30px;
-	opacity: 0.9;
 }
 
 button:hover {
